@@ -3,6 +3,8 @@ import { defineConfig } from 'astro/config';
 
 
 export default defineConfig({
-  site: 'https://nuriacasaban.github.io',
-  base: '/',
+  output: 'static',  // build estático
+  build: {
+    outDir: 'dist',  // carpeta de salida
+  }
 });
