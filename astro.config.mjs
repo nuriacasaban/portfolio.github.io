@@ -3,6 +3,6 @@ import { defineConfig } from 'astro/config';
 
 
 export default defineConfig({
-  site: 'https://nuriacasaban.github.io',
+  site: 'https://nuriacasaban/nuriacasaban.github.io',
   base: '/',
 });
