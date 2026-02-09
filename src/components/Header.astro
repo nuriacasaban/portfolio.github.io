@@ -1,0 +1,83 @@
+<header class="wrapper stack gap-4 lg:gap-8" id="main-header">
+  <!-- Navegación -->
+  <nav class="stack horizontal gap-8 lg:gap-12">
+    <a href="/" class="nav-btn">Inicio</a>
+    <a href="/trabajos" class="nav-btn">Galería</a>
+    <a href="#sobre-mi" class="nav-btn">Proyectos</a>
+  </nav>
+
+
+
+  <!-- Iconos sociales -->
+  <div id="social-icons">
+    <a href="https://www.linkedin.com/in/tu-perfil" target="_blank" rel="noopener">
+      <img src="/src/assets/svg/linkedin.svg.svg" alt="LinkedIn" />
+    </a>
+    <a href="https://www.instagram.com/lalaulozanoo" target="_blank" rel="noopener">
+      <img src="/src/assets/svg/instagram.svg.svg" alt="Instagram" />
+    </a>
+  </div>
+</header>
+
+<style>
+/* Header principal */
+#main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+/* Navegación */
+#main-header nav {
+  display: flex;
+  gap: 2rem;
+}
+
+#main-header .nav-btn {
+  font-weight: 600;
+  color: #111827;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+
+#main-header .nav-btn:hover {
+  background-color: #716073;
+  color: white;
+}
+
+/* Iconos sociales */
+#social-icons {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  gap: 10px;
+  z-index: 210; /* Encima del header si se solapan */
+}
+
+#social-icons img {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.2s;
+}
+
+#social-icons a:hover img {
+  transform: scale(1.2);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  #main-header nav {
+    gap: 1rem;
+  }
+}
+</style>
