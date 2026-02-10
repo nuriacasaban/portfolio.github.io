@@ -11,17 +11,17 @@ import background from '../assets/background.svg';
 
   <!-- Iconos sociales fijos arriba a la derecha -->
   <div id="social-icons">
-    <a href="https://www.linkedin.com/in/tu-perfil" target="_blank" rel="noopener">
-      <img src="/src/assets/svg/linkedin.svg.svg" alt="LinkedIn" />
-    </a>
     <a href="https://www.instagram.com/lalaulozanoo" target="_blank" rel="noopener">
       <img src="/src/assets/svg/instagram.svg.svg" alt="Instagram" />
+    </a>
+    <a href="https://www.linkedin.com/in/tu-perfil" target="_blank" rel="noopener">
+      <img src="/src/assets/svg/linkedin.svg.svg" alt="LinkedIn" />
     </a>
   </div>
 
   <main class="wrapper stack gap-8 lg:gap-12" style="margin-top: 100px;">
     <h1>En un futuro...</h1>
-    <p>About me</p>
+    <p>....</p>
   </main>
 
   <style>
@@ -49,9 +49,11 @@ import background from '../assets/background.svg';
       height: 28px;
       transition: transform 0.2s;
     }
-    #social-icons a:hover img {
-      transform: scale(1.2);
-    }
+   #social-icons img:hover {
+  transform: scale(1.2);
+  filter: brightness(0) saturate(100%) invert(44%) sepia(99%) saturate(4106%) hue-rotate(317deg) brightness(100%) contrast(97%);
+  opacity: 1;
+}
 
     main {
       max-width: 1200px;

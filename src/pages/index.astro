@@ -4,286 +4,379 @@ import background from '../assets/background.svg';
 ---
 
 <Layout>
-  <!-- Header con botones -->
-  <header class="wrapper stack gap-4 lg:gap-8" id="main-header">
-    <nav class="stack horizontal gap-8 lg:gap-12">
-     <a href="/" class="nav-btn" data-preview="/">Inicio</a>
-    <a href="/trabajos" class="nav-btn" data-preview="/trabajos">Galería</a>
-    <a href="/sobremi" class="nav-btn" data-preview="/sobremi">Proyectos</a>
-    </nav>
 
-    <!-- Preview flotante -->
-    <div id="nav-preview">
-     <iframe src="" frameborder="0"></iframe>
-    </div>
+  <!-- HEADER -->
+  <header id="main-header">
+    <nav>
+      <a href="/" class="nav-btn">Inicio</a>
+      <a href="/trabajos" class="nav-btn">Galería</a>
+      <a href="/proyectos" class="nav-btn">Proyectos</a>
+      <a href="/contact" class="nav-btn">Contacto</a> 
+    </nav>
   </header>
 
-  <!-- Fondo -->
-  <img id="background" src={background.src} alt="Fondo" fetchpriority="high" />
+  <!-- HERO -->
+  <section class="hero">
+    <img
+      src="/images/hero.jpg"
+      alt="Hero image"
+      class="hero-image"
+    />
 
-  <!-- Iconos sociales -->
+    <div class="hero-text">
+      <h1>LA LAURI</h1>
+      <p>Photography · Art Direction</p>
+    </div>
+  </section>
+
+  <!-- FONDO -->
+  <img id="background" src={background.src} alt="" />
+
+  <!-- ICONOS -->
   <div id="social-icons">
-    <a href="https://www.linkedin.com/in/tu-perfil" target="_blank" rel="noopener">
-      <img src="/src/assets/svg/linkedin.svg.svg" alt="LinkedIn" />
-    </a>
-    <a href="https://www.instagram.com/lalaulozanoo" target="_blank" rel="noopener">
+    <a href="https://www.instagram.com/lalaulozanoo" target="_blank">
       <img src="/src/assets/svg/instagram.svg.svg" alt="Instagram" />
+    </a>
+    <a href="https://www.linkedin.com" target="_blank">
+      <img src="/src/assets/svg/linkedin.svg.svg" alt="LinkedIn" />
     </a>
   </div>
 
-  <!-- Contenido principal -->
+  <!-- CONTENIDO -->
   <main>
+  <section class="intro">
+    <p>
+      Visual storyteller focused on photography,
+      art direction and editorial aesthetics.
+    </p>
 
+    <!-- Enlace "Sobre mi" -->
+    <a href="/sobremi" class="sobremi-link">Sobre mi</a>
+  </section>
+</main>
 
-    <!-- Sección Galería -->
-    <section id="trabajos" class="section-offset">
-      <h1></h1>
-    </section>
-
-    <!-- Sección Sobre mí / Hero y Slider -->
-    <section id="sobre-mi" class="hero-section section-offset">
-      <div class="hero-left">
-        <h1>Sobre mí</h1>
-        <a href="/sobremi" target="_blank">
-          <img src="/images/foto6.jpg" alt="Foto personal" class="personal-photo" />
-        </a>
-        <p class="role-text1">#Fotografía</p>
-        <p class="role-text1">#Diseño</p>
-        <p class="role-text1">#Dirección arte</p>
-      </div>
-
-      <div class="hero-right">
-        <div id="slider">
-          <div class="slides">
-            <div class="slide active">
-              <img src="/images/foto1.jpg" alt="Foto 1" />
-              <div class="slider-title">
-                <span class="line-big stair">PORTFOLIO</span>
-                <span class="line-small stair">LA</span>
-                <span class="line-small stair">LAURI</span>
-              </div>
-            </div>
-            <div class="slide">
-              <img src="/images/foto2.jpg" alt="Foto 2" />
-              <div class="slider-title">
-                <span class="line-big stair">PORTFOLIO</span>
-                <span class="line-small stair">LA</span>
-                <span class="line-small stair">LAURI</span>
-              </div>
-            </div>
-            <div class="slide">
-              <img src="/images/foto3.jpg" alt="Foto 3" />
-              <div class="slider-title">
-                <span class="line-big stair">PORTFOLIO</span>
-                <span class="line-small stair">LA</span>
-                <span class="line-small stair">LAURI</span>
-              </div>
-            </div>
-          </div>
-          <button class="prev">&#10094;</button>
-          <button class="next">&#10095;</button>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer con Contacto -->
+  <!-- FOOTER -->
   <footer class="site-footer">
-    <div class="footer-content">
-      <h2 class="contact-title contact-trigger">Contacto</h2>
-    </div>
-    <a href="/privacidad" class="footer-item footer-link">Aviso de privacidad</a>
-    <a href="/terminos" class="footer-item footer-link">Términos y condiciones</a>
+    <h2 class="contact-trigger">Contacto</h2>
     <p>© 2026 La Lauri</p>
+      <p>
+    <a href="mailto:lauralozano992@gmail.com" class="footer-email">
+      lauralozano992@gmail.com
+    </a>
+  </p>
   </footer>
+
 </Layout>
 
-<!-- Modal de Contacto -->
+<!-- CURSOR -->
+<div class="custom-cursor"></div>
+
+<!-- MODAL -->
 <div id="contact-modal" class="modal">
   <div class="modal-content">
-    <span id="close-modal" class="close">&times;</span>
-    <h3 class="modal-title">Hablemos ✨</h3>
-    <p class="modal-subtitle">Cuéntame tu idea o proyecto</p>
-    <form action="https://formspree.io/f/xnjbnvgj" method="POST" class="contact-form">
-      <div class="field">
-        <input type="text" name="name" id="name" required />
-        <label for="name">Nombre</label>
-      </div>
-      <div class="field">
-        <input type="email" name="email" id="email" required />
-        <label for="email">Correo</label>
-      </div>
-      <div class="field">
-        <input type="tel" name="phone" id="phone" />
-        <label for="phone">Teléfono (opcional)</label>
-      </div>
-      <div class="field">
-        <textarea name="message" id="message" rows="5" required></textarea>
-        <label for="message">Mensaje</label>
-      </div>
+    <span id="close-modal">&times;</span>
+    <h3>Hablemos ✨</h3>
+
+    <form action="https://formspree.io/f/xnjbnvgj" method="POST">
+      <input type="text" name="name" placeholder="Nombre" required />
+      <input type="email" name="email" placeholder="Correo" required />
+      <textarea name="message" placeholder="Mensaje" required></textarea>
       <button type="submit">Enviar</button>
     </form>
   </div>
 </div>
 
 <style>
-/* Header */
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* FADE IN */
+body {
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* HEADER */
 #main-header {
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(10px);
-  z-index: 200;
+  padding: 1.5rem 3rem;
+  z-index: 10;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+#main-header nav {
   display: flex;
-  justify-content: center;
-  padding: 1rem 2rem;
+  gap: 2rem;
 }
 
-#main-header nav { display: flex; gap: 2rem; }
+.sobremi-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: 600;
+  font-size: 2rem;
+  color: rgb(129, 125, 125);
+  text-decoration: none;   /* Quitamos subrayado */
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.sobremi-link:hover {
+  color: #ec0b52;          /* Color rosa al pasar el cursor */
+  transform: scale(1.05);  /* Pequeño zoom al pasar el cursor */
+}
+
 .nav-btn {
-  position: relative;
-  font-weight: 700;
-  color: #504750;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  transition: all 0.3s ease;
+  color: rgb(129, 125, 125);
+  text-decoration: none;       /* quitamos subrayado nativo */
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border-bottom: 2px solid rgb(129, 125, 125); /* subrayado gris */
+  padding-bottom: 2px;         /* espacio entre texto y línea */
+  transition: color 0.4s ease, border-color 0.4s ease;
 }
-.nav-btn:hover { background: linear-gradient(90deg,#2e2e2e,#9d8b9f); color:white; }
-.nav-btn.active { border-bottom:2px solid #b7a1b9; color:#b7a1b9; }
 
-/* Preview flotante centrado con zoom */
-#nav-preview {
-  position: fixed;      /* fijo en la pantalla */
-  top: 50%;             /* vertical centrado */
-  left: 50%;            /* horizontal centrado */
-  transform: translate(-50%, -50%) scale(0.2); /* centrado y pequeño */
-  width: 1200px;        /* tamaño real de la página en iframe */
-  height: 800px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  opacity: 0;
-  pointer-events: none; /* no interfiere con clicks */
-  transition: opacity 0.3s ease, transform 0.3s ease;
+.nav-btn:hover {
+  color:  rgb(129, 125, 125);             /* violeta al pasar el cursor */
+  border-color: #ec0b52;      /* línea violeta también */
+}
+
+.nav-btn::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: #b7a1b9;
+  transition: all 0.4s ease;
+  transform: translateX(-50%);
+}
+
+
+
+
+/* HEADER SCROLL */
+#main-header.scrolled {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(8px);
+}
+
+#main-header.scrolled .nav-btn {
+  color: rgb(40,40,40);
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+  margin-left: auto;
+  display: block;
+}
+
+.hero-text {
+  position: absolute;
+  bottom: 10vh;
+  left: 6vw;
+  color: rgb(22, 22, 22);
+}
+
+.hero-text h1 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  letter-spacing: 0.3em;
+  font-weight: 600;
+}
+
+.hero-text p {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.1),
+    rgba(0,0,0,0.35)
+  );
+}
+
+/* INTRO */
+.intro {
+  max-width: 600px;
+  margin: 8rem auto;
+  padding: 0 2rem;
+  font-size: 1.2rem;
+  line-height: 1.6;
+   text-align: center;
+}
+
+/* SOCIAL */
+#social-icons {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#social-icons img {
+   width: 30px;
+  opacity: 0.7;
+  transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+  filter: grayscale(0%) brightness(1); /* por defecto sin cambios */
+}
+
+#social-icons img:hover {
+  transform: scale(1.2);
+  filter: brightness(0) saturate(100%) invert(44%) sepia(99%) saturate(4106%) hue-rotate(317deg) brightness(100%) contrast(97%);
+  opacity: 1;
+}
+
+/* FOOTER */
+.site-footer {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.site-footer h2 {
+  font-size: 0.9rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.footer-email {
+  color: rgb(90, 87, 87); /* color base gris */
+  text-decoration: none;
+  transition: color 0.3s ease, font-size 0.3s ease;
+}
+
+.footer-email:hover {
+  color: #ec0b52; /* color al pasar el cursor */
+  font-size: 1.1rem;      
+}
+
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+}
+
+/* CURSOR */
+.custom-cursor {
+  position: fixed;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.12s ease-out;
   z-index: 9999;
 }
 
-#nav-preview.active {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(0.2); /* mismo zoom */
+/* BACKGROUND */
+#background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  filter: blur(120px);
 }
 
-#nav-preview iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-radius: 12px;
-  transform: scale(1); /* ya escalamos el contenedor */
-  transform-origin: top left;
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero-text {
+    left: 2rem;
+  }
+
+  .hero-text h1 {
+    letter-spacing: 0.15em;
+  }
 }
 
-
-/* Fondo */
-#background { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; filter:blur(100px); }
-
-/* Iconos sociales */
-#social-icons { position:fixed; top:16px; right:16px; display:flex; gap:10px; z-index:210; }
-#social-icons img { width:28px; height:28px; transition:transform 0.2s; }
-#social-icons a:hover img { transform:scale(1.2); }
-
-/* Ajuste offset para secciones con header fijo */
-.section-offset { scroll-margin-top:100px; padding-top:2rem; }
-
-/* Hero y slider */
-.hero-section { display:flex; gap:2rem; justify-content:center; margin-bottom:4rem; position:relative; }
-.hero-left { text-align:center; flex-shrink:0; }
-.personal-photo { width:120px; border-radius:1rem; box-shadow:0 4px 12px rgba(0,0,0,0.2); margin-bottom:0.5rem; transition:0.3s; }
-.hero-left a:hover .personal-photo { transform:scale(1.1); box-shadow:0 8px 20px rgba(0,0,0,0.4); }
-.hero-right { flex:1; max-width:700px; position:relative; }
-#slider { position:relative; overflow:hidden; border-radius:16px; height:400px; }
-.slides { display:flex; transition: transform 0.3s ease-in-out; }
-.slide { min-width:100%; display:none; position:relative; height:100%; }
-.slide img { width:100%; height:100%; object-fit:cover; }
-.slide.active { display:block; }
-.prev, .next { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.3); color:white; border:none; font-size:2rem; padding:8px 16px; cursor:pointer; border-radius:50%; z-index:10; }
-.prev { left:10px; } .next { right:10px; }
-.prev:hover, .next:hover { background:rgba(0,0,0,0.6); }
-.slider-title { position:absolute; top:20px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; color:white; font-weight:700; text-transform:uppercase; padding:0.5rem 1rem; border-radius:0.5rem; z-index:10; line-height:1.2; }
-.slider-title span { display:block; }
-.line-big { font-size:2.5rem; }
-.line-small { font-size:1.5rem; }
-
-/* Footer y modal */
-.site-footer { text-align:center; padding:2rem 1rem; background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); margin-top:4rem; }
-.footer-content { display:flex; justify-content:center; flex-wrap:wrap; gap:2rem; }
-.footer-item, .contact-title { font-size:0.9rem; color:#504750; cursor:pointer; transition:0.2s; }
-.footer-item:hover, .contact-title:hover { text-decoration:underline; }
-.modal { display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center; }
-.modal.active { display:flex; }
-.modal-content { background:#fff; border-radius:1rem; padding:2rem; width:90%; max-width:600px; box-shadow:0 10px 25px rgba(0,0,0,0.3); position:relative; }
-.close { position:absolute; top:1rem; right:1rem; font-size:1.5rem; font-weight:bold; cursor:pointer; }
-.contact-form { display:flex; flex-direction:column; gap:1.2rem; }
-.contact-form input, .contact-form textarea { padding:0.75rem 1rem; border-radius:0.75rem; border:1px solid #ddd; font-family:inherit; transition:0.25s; background:#fafafa; }
-.contact-form input:focus, .contact-form textarea:focus { outline:none; border-color:#716073; background:#fff; box-shadow:0 0 0 2px rgba(113,96,115,0.15); }
-.contact-form button { background:#716073; color:white; font-weight:600; padding:0.8rem 1.5rem; border:none; border-radius:999px; cursor:pointer; transition:0.25s; align-self:flex-end; }
-.contact-form button:hover { background:#b7a1b9; transform:translateY(-1px); box-shadow:0 6px 15px rgba(113,96,115,0.3); }
-
-/* Responsive */
-@media(max-width:1024px) { .personal-photo{width:100px;} .hero-right{max-width:100%;} }
-@media(max-width:768px){ main{margin:10px auto 0;} h1{font-size:2rem;} .hero-section{flex-direction:column; align-items:center; gap:1.5rem;} .line-big{font-size:1.8rem;} .line-small{font-size:1rem;} }
 </style>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  // Slider
-  const slides = document.querySelectorAll(".slide");
-  let current = 0;
-  function showSlide(index){ slides.forEach((s,i)=>s.classList.toggle("active", i===index)); }
-  document.querySelector(".next").addEventListener("click", ()=>{ current=(current+1)%slides.length; showSlide(current); });
-  document.querySelector(".prev").addEventListener("click", ()=>{ current=(current-1+slides.length)%slides.length; showSlide(current); });
-  setInterval(()=>{ current=(current+1)%slides.length; showSlide(current); },5000);
-
-  // Scroll y nav activo
-  const sections = document.querySelectorAll("main section");
-  window.addEventListener("scroll", () => {
-    let currentSection = "";
-    sections.forEach(sec => { if(scrollY >= sec.offsetTop-100) currentSection = sec.id; });
-    navBtns.forEach(btn => btn.classList.toggle("active", btn.getAttribute("href")==="#"+currentSection));
-  });
-
-  // Preview flotante
- const preview = document.getElementById("nav-preview");
-const previewIframe = preview.querySelector("iframe");
-const navBtns = document.querySelectorAll(".nav-btn");
-  navBtns.forEach(btn => {
-  btn.addEventListener("mouseenter", () => {
-    // Carga la página real en el iframe flotante
-    previewIframe.src = btn.dataset.preview;
-    const rect = btn.getBoundingClientRect();
-    preview.style.left = rect.left + rect.width / 2 + "px";
-    preview.classList.add("active");
-  });
-
-  btn.addEventListener("mouseleave", () => {
-    preview.classList.remove("active");
-  });
+/* CURSOR */
+const cursor = document.querySelector('.custom-cursor');
+window.addEventListener('mousemove', e => {
+  cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
 });
- window.addEventListener("resize", () => {
-  const activeBtn = document.querySelector(".nav-btn:hover");
-  if (activeBtn) {
-    const rect = activeBtn.getBoundingClientRect();
-    preview.style.left = rect.left + rect.width / 2 + "px";
+
+/* HEADER SCROLL */
+const header = document.getElementById("main-header");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > window.innerHeight * 0.6) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
   }
 });
 
-  // Modal Contacto
-  const modal = document.getElementById("contact-modal");
-  const triggers = document.querySelectorAll(".contact-trigger");
-  const closeBtn = document.getElementById("close-modal");
-  triggers.forEach(el=>el.addEventListener("click",()=>modal.classList.add("active")));
-  closeBtn.addEventListener("click",()=>modal.classList.remove("active"));
-  window.addEventListener("click",(e)=>{ if(e.target===modal) modal.classList.remove("active"); });
+/* FADE OUT LINKS */
+document.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", e => {
+    if (link.target === "_blank") return;
+    e.preventDefault();
+    document.body.style.opacity = 0;
+    setTimeout(() => {
+      window.location = link.href;
+    }, 300);
+  });
+});
+
+/* MODAL */
+const modal = document.getElementById("contact-modal");
+document.querySelectorAll(".contact-trigger").forEach(el =>
+  el.addEventListener("click", () => modal.classList.add("active"))
+);
+document.getElementById("close-modal")
+  .addEventListener("click", () => modal.classList.remove("active"));
+window.addEventListener("click", e => {
+  if (e.target === modal) modal.classList.remove("active");
 });
 </script>

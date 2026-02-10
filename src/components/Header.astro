@@ -1,83 +1,72 @@
-<header class="wrapper stack gap-4 lg:gap-8" id="main-header">
-  <!-- Navegación -->
-  <nav class="stack horizontal gap-8 lg:gap-12">
+<!-- Header.astro -->
+<header id="main-header">
+  <nav>
     <a href="/" class="nav-btn">Inicio</a>
     <a href="/trabajos" class="nav-btn">Galería</a>
-    <a href="#sobre-mi" class="nav-btn">Proyectos</a>
+    <a href="/sobremi" class="nav-btn">Proyectos</a>
+    <a href="/contact" class="nav-btn">Contacto</a>
   </nav>
 
-
-
-  <!-- Iconos sociales -->
-  <div id="social-icons">
-    <a href="https://www.linkedin.com/in/tu-perfil" target="_blank" rel="noopener">
-      <img src="/src/assets/svg/linkedin.svg.svg" alt="LinkedIn" />
-    </a>
-    <a href="https://www.instagram.com/lalaulozanoo" target="_blank" rel="noopener">
-      <img src="/src/assets/svg/instagram.svg.svg" alt="Instagram" />
-    </a>
-  </div>
 </header>
 
 <style>
-/* Header principal */
+/* HEADER */
 #main-header {
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(10px);
-  z-index: 200;
+  padding: 1.5rem 3rem;
+  z-index: 10;
   display: flex;
-  justify-content: center;
-  padding: 1rem 0;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
-/* Navegación */
 #main-header nav {
   display: flex;
   gap: 2rem;
 }
 
-#main-header .nav-btn {
-  font-weight: 600;
-  color: #111827;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  transition: all 0.2s;
+.nav-btn {
+  color: rgb(129, 125, 125);
+  text-decoration: none; 
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border-bottom: 2px solid rgb(129, 125, 125);
+  padding-bottom: 2px;
+  transition: color 0.4s ease, border-color 0.4s ease;
+  position: relative;
 }
 
-#main-header .nav-btn:hover {
-  background-color: #716073;
-  color: white;
+.nav-btn:hover {
+  color: rgb(129, 125, 125);
+  border-color: #ec0b52;
 }
 
-/* Iconos sociales */
-#social-icons {
-  position: fixed;
-  top: 16px;
-  right: 16px;
-  display: flex;
-  gap: 10px;
-  z-index: 210; /* Encima del header si se solapan */
+/* SCROLL HEADER */
+#main-header.scrolled {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(8px);
 }
 
-#social-icons img {
-  width: 28px;
-  height: 28px;
-  transition: transform 0.2s;
+#main-header.scrolled .nav-btn {
+  color: rgb(40,40,40);
 }
 
-#social-icons a:hover img {
-  transform: scale(1.2);
-}
 
-/* Responsivo */
-@media (max-width: 768px) {
-  #main-header nav {
-    gap: 1rem;
-  }
-}
+
 </style>
+
+<script>
+const header = document.getElementById("main-header");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > window.innerHeight * 0.6) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+});
+</script>
