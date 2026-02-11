@@ -171,37 +171,38 @@
 </style>
 
 <script>
-// Toggle menú móvil
-function setupMobileMenu() {
+(() => {
   const menuIcon = document.querySelector('.menu-icon');
   const navLinks = document.querySelector('.nav-links');
 
   const toggleMenu = () => {
-    navLinks.classList.toggle('show');
-    menuIcon.classList.toggle('active');
+    if (window.innerWidth <= 768) {
+      navLinks.classList.toggle('show');
+      menuIcon.classList.toggle('active');
+    }
   };
 
-  if (window.innerWidth <= 768) {
-    menuIcon.addEventListener('click', toggleMenu);
+  // Abrir/cerrar menú al tocar icono (móvil)
+  menuIcon.addEventListener('click', toggleMenu);
 
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
+  // Cerrar menú al tocar un enlace (móvil)
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 768) {
         navLinks.classList.remove('show');
         menuIcon.classList.remove('active');
-      });
+      }
     });
-  }
-}
+  });
 
-// Inicializar al cargar y al redimensionar
-window.addEventListener('load', setupMobileMenu);
-window.addEventListener('resize', () => {
-  const menuIcon = document.querySelector('.menu-icon');
-  const navLinks = document.querySelector('.nav-links');
-  if (window.innerWidth > 768) {
-    navLinks.classList.remove('show');
-    menuIcon.classList.remove('active');
-  }
-  setupMobileMenu();
-});
+  // Reset estado si pasamos a escritorio
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      navLinks.classList.remove('show');
+      menuIcon.classList.remove('active');
+    }
+  });
+})();
+</script>
+
 </script>
