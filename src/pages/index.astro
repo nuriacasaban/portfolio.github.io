@@ -41,15 +41,6 @@ import Header from '../components/Header.astro';
     </div>
   </section>
 
-  <!-- ICONOS SOCIALES -->
-  <div id="social-icons">
-    <a href="https://www.instagram.com/lalaulozanoo" target="_blank">
-      <img src="/src/assets/svg/instagram.svg.svg" alt="Instagram" />
-    </a>
-    <a href="https://www.linkedin.com" target="_blank">
-      <img src="/src/assets/svg/linkedin.svg.svg" alt="LinkedIn" />
-    </a>
-  </div>
 
   <!-- CONTENIDO -->
   <main>
@@ -65,6 +56,15 @@ import Header from '../components/Header.astro';
   <!-- FOOTER -->
   <footer class="site-footer">
     <h2 class="contact-trigger">Contacto</h2>
+    <!-- ICONOS SOCIALES EN FOOTER -->
+  <div class="footer-social">
+    <a href="https://www.instagram.com/lalaulozanoo" target="_blank">
+      <img src="/src/assets/svg/instagram.svg.svg" alt="Instagram" />
+    </a>
+    <a href="https://www.linkedin.com" target="_blank">
+      <img src="/src/assets/svg/linkedin.svg.svg" alt="LinkedIn" />
+    </a>
+  </div>
     <p>© 2026 La Lauri</p>
     <p>
       <a href="mailto:lauralozano992@gmail.com" class="footer-email">
@@ -82,7 +82,6 @@ import Header from '../components/Header.astro';
   </div>
 
 </Layout>
-
 <style>
 /* RESET */
 * {
@@ -91,10 +90,12 @@ import Header from '../components/Header.astro';
   box-sizing: border-box;
 }
 
+/* TIPOGRAFÍA GLOBAL */
 body {
   opacity: 0;
   animation: fadeIn 0.6s ease forwards;
   background-color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; /* 👈 cambia si usas otra fuente */
 }
 @keyframes fadeIn { to { opacity: 1; } }
 
@@ -107,8 +108,6 @@ body {
   z-index: 20;
   transition: background 0.4s ease;
 }
-
-/* NAV LINKS */
 #main-header nav {
   display: flex;
   gap: 2rem;
@@ -149,6 +148,7 @@ body {
   text-transform: uppercase;
   transition: all 0.3s ease;
   pointer-events: none;
+  font-family: inherit; /* 🔥 heredamos la fuente global */
 }
 .project-container:hover .project-label {
   transform: translate(-50%, -50%) scale(2.5);
@@ -201,11 +201,12 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  font-size: 4rem;
+  font-size: 2.5rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   z-index: 3;
   white-space: nowrap;
+  font-family: inherit; /* 🔥 fuente igual que escritorio */
 }
 .modal-close {
   position: absolute;
@@ -213,7 +214,7 @@ body {
   right: 2rem;
   font-size: 5rem;
   font-weight: bold;
-  color: #070707; /* rosa header */
+  color: #070707;
   cursor: pointer;
   transition: transform 0.3s ease, color 0.3s ease;
   z-index: 3;
@@ -227,7 +228,6 @@ body {
 .top-banner {
   position: relative;
   top: 80px;
-  left: 0;
   width: 100%;
   background: white;
   overflow: hidden;
@@ -246,6 +246,7 @@ body {
   font-size: 2.5rem;
   letter-spacing: 0.5em;
   text-transform: uppercase;
+  font-family: inherit;
 }
 @keyframes scrollBanner { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
@@ -257,6 +258,7 @@ body {
   font-size: 1.2rem;
   line-height: 1.6;
   text-align: center;
+  font-family: inherit;
 }
 .intro a {
   text-decoration: none;
@@ -264,8 +266,27 @@ body {
   font-size: 2.4rem;
   transition: transform 0.3s ease;
   display: inline-block;
+  font-family: inherit;
 }
 .intro a:hover { transform: scale(1.2); }
+
+/* FOOTER */
+.site-footer {
+  padding: 4rem 2rem;
+  text-align: center;
+  font-family: inherit;
+}
+.footer-email {
+  color: rgb(129, 125, 125);
+  text-decoration: none;
+  display: inline-block;
+  transition: color 0.3s ease, transform 0.3s ease;
+  font-family: inherit;
+}
+.footer-email:hover {
+  color: #ec0b52;
+  transform: scale(1.1);
+}
 
 /* SOCIAL */
 #social-icons {
@@ -286,39 +307,80 @@ body {
   filter: brightness(0) saturate(100%) invert(44%) sepia(99%) saturate(4106%) hue-rotate(317deg) brightness(100%) contrast(97%);
   opacity: 1;
 }
+.footer-social {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+.footer-social img {
+  width: 30px;
+  opacity: 0.7;
+  transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
+}
+.footer-social img:hover {
+  transform: scale(1.2);
+  opacity: 1;
+  filter: brightness(0) saturate(100%) invert(44%) sepia(99%) saturate(4106%) hue-rotate(317deg) brightness(100%) contrast(97%);
+}
 
-/* FOOTER */
-.site-footer {
-  padding: 4rem 2rem;
-  text-align: center;
-}
-.footer-email {
-  color: rgb(129, 125, 125);
-  text-decoration: none;
-  display: inline-block;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-.footer-email:hover {
-  color: #ec0b52;
-  transform: scale(1.1);
-}
-
-/* RESPONSIVE */
+/* RESPONSIVE MÓVIL */
 @media (max-width: 768px) {
-  .hero-grid { grid-template-columns: 1fr; margin-top: 120px; }
+
+  .hero-grid { 
+    grid-template-columns: 1fr; 
+    margin-top: 120px; 
+  }
+
   .hero-left, .hero-right { height: auto; }
+
   .hero-right .hero-top, .hero-right .hero-bottom { margin-top: 1rem; }
+
   .intro { margin: 4rem auto; padding: 0 1rem; font-size: 1rem; }
+
   .top-banner .banner-track span { font-size: 1.5rem; padding: 0.5rem 1rem; }
+
+  /* ETIQUETAS PROYECTOS EN MÓVIL */
+  .project-label {
+    font-size: 1.6rem;
+    white-space: nowrap;            /* todo en una fila */
+    background: rgba(0,0,0,0.55);  /* sombreado */
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.8rem;
+    animation: pulseProjectMobile 1.8s infinite ease-in-out;
+    font-family: inherit;           /* 🔥 igual que escritorio */
+  }
+
+  @keyframes pulseProjectMobile {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.15); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+  }
+
+  .project-modal.active .modal-close {
+    animation: pulseCloseMobile 1.2s infinite ease-in-out;
+  }
+
+  @keyframes pulseCloseMobile {
+    0% { transform: scale(1); color: #070707; }
+    50% { transform: scale(1.8); color: #ec0b52; }
+    100% { transform: scale(1); color: #070707; }
+  }
+
 }
 </style>
+
 
 <script>
 /* HEADER SCROLL */
 const header = document.getElementById("main-header");
+
 window.addEventListener("scroll", () => {
-  if (window.scrollY > window.innerHeight * 0.6) header.classList.add("scrolled");
-  else header.classList.remove("scrolled");
+  if (window.scrollY > window.innerHeight * 0.6) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
 });
 
 /* MODAL PROYECTOS */
@@ -329,37 +391,65 @@ const modalBg = modal.querySelector('.modal-bg');
 const modalTitle = modal.querySelector('.modal-title');
 const modalClose = modal.querySelector('.modal-close');
 
+let typingInterval = null;
+let isModalOpen = false;   // 🔥 controlamos si ya está abierto
+let isTyping = false;      // 🔥 controlamos si está escribiendo
+
 projectContainers.forEach(container => {
   container.addEventListener('click', () => {
+
+    // 🔥 Si ya está abierto o escribiendo, no hacemos nada
+    if (isModalOpen || isTyping) return;
+
+    isModalOpen = true;
+
     const imgSrc = container.querySelector('img').src;
     const title = container.querySelector('.project-label').textContent.toUpperCase();
 
     modal.style.display = 'flex';
+    modal.classList.add('active');
+
     modalImg.src = imgSrc;
     modalBg.style.backgroundImage = `url(${imgSrc})`;
 
+    // Limpiar intervalo anterior si existiera
+    if (typingInterval) clearInterval(typingInterval);
+
     modalTitle.textContent = '';
     let index = 0;
-    const interval = setInterval(() => {
+    isTyping = true;
+
+    typingInterval = setInterval(() => {
       if (index < title.length) {
         modalTitle.textContent += title[index];
         index++;
       } else {
-        clearInterval(interval);
+        clearInterval(typingInterval);
+        isTyping = false;
       }
     }, 100);
   });
 });
 
-modalClose.addEventListener('click', () => {
+/* CERRAR MODAL */
+function closeModal() {
   modal.style.display = 'none';
+  modal.classList.remove('active');
   modalTitle.textContent = '';
-});
+
+  if (typingInterval) clearInterval(typingInterval);
+
+  isModalOpen = false;
+  isTyping = false;
+}
+
+modalClose.addEventListener('click', closeModal);
 
 modal.addEventListener('click', (e) => {
   if (e.target === modal) {
-    modal.style.display = 'none';
-    modalTitle.textContent = '';
+    closeModal();
   }
 });
 </script>
+
+
