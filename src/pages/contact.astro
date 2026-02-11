@@ -1,21 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
-import background from '../assets/background.svg';
 ---
-
 <Layout>
 
   <!-- HEADER desde componente -->
   <Header />
-<img id="background" src={background.src} alt="Fondo" fetchpriority="high" />
-  <main class="contact-page">
-    <!-- Hero / título -->
-    <section class="contact-hero">
-      <h1>LET'S START A CONVERSATION</h1>
-      <p>Cuéntame tu proyecto y me pondré en contacto contigo pronto.</p>
-    </section>
-  <!-- Iconos sociales fijos arriba a la derecha -->
+
+  <!-- ICONOS SOCIALES -->
   <div id="social-icons">
     <a href="https://www.instagram.com/lalaulozanoo" target="_blank" rel="noopener">
       <img src="/src/assets/svg/instagram.svg.svg" alt="Instagram" />
@@ -24,7 +16,14 @@ import background from '../assets/background.svg';
       <img src="/src/assets/svg/linkedin.svg.svg" alt="LinkedIn" />
     </a>
   </div>
-    <!-- Formulario -->
+
+  <!-- FORMULARIO DE CONTACTO -->
+  <main class="contact-page">
+    <section class="contact-hero">
+      <h1>LET'S START A CONVERSATION</h1>
+      <p>Cuéntame tu proyecto y me pondré en contacto contigo pronto.</p>
+    </section>
+
     <section class="contact-form-section">
       <form id="contact-form" action="https://formspree.io/f/xnjbnvgj" method="POST" novalidate>
         <label>
@@ -48,25 +47,77 @@ import background from '../assets/background.svg';
         </label>
 
         <button type="submit">Enviar</button>
-
-        <!-- Mensaje de error -->
         <p id="form-error" class="form-error">Por favor, completa todos los campos obligatorios.</p>
       </form>
 
-      <!-- Info adicional -->
       <div class="contact-info">
         <p>NEW YORK: +1 347-864-1240</p>
         <p>TORONTO: +1 416-219-9401</p>
-        <p>
-          Email: 
-          <a href="mailto:lauralozano992@gmail.com">lauralozano992@gmail.com</a>
-        </p>
+        <p>Email: <a href="mailto:lauralozano992@gmail.com">lauralozano992@gmail.com</a></p>
       </div>
     </section>
   </main>
+
 </Layout>
 
 <style>
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY */
+body {
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+  background-color: white;
+}
+@keyframes fadeIn { to { opacity: 1; } }
+
+/* HEADER */
+#main-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1.5rem 3rem;
+  z-index: 20;
+  transition: background 0.4s ease;
+}
+#main-header nav { display: flex; gap: 2rem; }
+
+.nav-btn {
+  color: rgb(129, 125, 125);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border-bottom: 2px solid rgb(129, 125, 125);
+  padding-bottom: 2px;
+}
+
+/* SOCIAL ICONS */
+#social-icons {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  gap: 10px;
+  z-index: 210;
+}
+#social-icons img {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.2s ease;
+}
+#social-icons img:hover {
+  transform: scale(1.2);
+  filter: brightness(0) saturate(100%) invert(44%) sepia(99%) saturate(4106%) hue-rotate(317deg) brightness(100%) contrast(97%);
+  opacity: 1;
+}
+
+/* CONTACTO */
 .contact-page {
   display: flex;
   flex-direction: column;
@@ -81,11 +132,13 @@ import background from '../assets/background.svg';
   font-weight: 700;
   letter-spacing: 0.2em;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .contact-hero p {
   font-size: 1rem;
   opacity: 0.8;
+  text-align: center;
 }
 
 /* FORMULARIO */
@@ -107,16 +160,6 @@ import background from '../assets/background.svg';
   font-size: 0.9rem;
 }
 
-   #background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  filter: blur(100px);
-}
-/* Etiqueta con asterisco al lado */
 .label-text {
   display: flex;
   align-items: center;
@@ -124,12 +167,8 @@ import background from '../assets/background.svg';
   margin-bottom: 0.3rem;
 }
 
-/* Asterisco rojo */
-.required {
-  color: red;
-}
+.required { color: red; }
 
-/* Inputs y textarea */
 .contact-form-section input,
 .contact-form-section textarea {
   padding: 0.8rem 1rem;
@@ -157,23 +196,19 @@ import background from '../assets/background.svg';
   cursor: pointer;
   transition: background 0.3s;
 }
+.contact-form-section button:hover { background: #ec0b52; }
 
-.contact-form-section button:hover {
-  background: #ec0b52;
-}
-
-/* Mensaje de error */
 .form-error {
-  display: none; /* oculto por defecto */
+  display: none;
   color: red;
   font-size: 0.9rem;
   margin-top: 0.5rem;
 }
 
-/* INFO ADICIONAL */
 .contact-info p {
   font-size: 0.9rem;
   margin: 0.3rem 0;
+  text-align: center;
 }
 
 .contact-info a {
@@ -181,29 +216,32 @@ import background from '../assets/background.svg';
   text-decoration: none;
   transition: color 0.3s;
 }
+.contact-info a:hover { color: #ec0b52; }
 
-.contact-info a:hover {
-  color: #ec0b52;
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .contact-page { padding: 3rem 2rem; }
+  #social-icons img { width: 26px; height: 26px; }
+  .contact-form-section button { padding: 0.7rem 1.8rem; }
 }
 
+@media (max-width: 768px) {
+  .contact-page { padding: 2.5rem 1.5rem; }
+  #social-icons { top: 12px; right: 12px; gap: 8px; }
+  #social-icons img { width: 24px; height: 24px; }
+  .contact-form-section input,
+  .contact-form-section textarea { padding: 0.7rem 0.8rem; }
+  .contact-form-section button { padding: 0.7rem 1.5rem; }
+}
 
-    #social-icons {
-      position: fixed;
-      top: 16px;
-      right: 16px;
-      display: flex;
-      gap: 10px;
-      z-index: 210; /* encima del header si se solapan */
-    }
-    #social-icons img {
-      width: 28px;
-      height: 28px;
-      transition: transform 0.2s;
-    }
-  #social-icons img:hover {
-  transform: scale(1.2);
-  filter: brightness(0) saturate(100%) invert(44%) sepia(99%) saturate(4106%) hue-rotate(317deg) brightness(100%) contrast(97%);
-  opacity: 1;
+@media (max-width: 480px) {
+  .contact-page { padding: 2rem 1rem; gap: 2rem; }
+  .contact-hero h1 { font-size: 1.8rem; }
+  .contact-hero p { font-size: 0.9rem; }
+  #social-icons img { width: 22px; height: 22px; }
+  .contact-form-section input,
+  .contact-form-section textarea { padding: 0.6rem 0.7rem; font-size: 0.85rem; }
+  .contact-form-section button { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
 }
 </style>
 
@@ -211,8 +249,8 @@ import background from '../assets/background.svg';
 // Reseteamos el formulario al cargar la página
 window.onload = () => {
   const form = document.getElementById("contact-form");
-  form.reset(); // limpia todos los campos
-  document.getElementById("form-error").style.display = "none"; // oculta error
+  form.reset();
+  document.getElementById("form-error").style.display = "none";
 }
 
 // Validación del formulario
@@ -221,15 +259,9 @@ const errorMsg = document.getElementById("form-error");
 
 form.addEventListener("submit", (e) => {
   let valid = true;
-
-  // Comprobamos cada campo requerido
   form.querySelectorAll("[required]").forEach((input) => {
-    if (!input.value.trim()) {
-      valid = false;
-    }
+    if (!input.value.trim()) valid = false;
   });
-
-  // Solo mostramos el mensaje si falta algún campo
   if (!valid) {
     e.preventDefault();
     errorMsg.style.display = "block";

@@ -1,38 +1,47 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import background from '../assets/background.svg';
+import Header from '../components/Header.astro';
 ---
 
 <Layout>
 
   <!-- HEADER -->
-  <header id="main-header">
-    <nav>
-      <a href="/" class="nav-btn">Inicio</a>
-      <a href="/trabajos" class="nav-btn">Galería</a>
-      <a href="/proyectos" class="nav-btn">Proyectos</a>
-      <a href="/contact" class="nav-btn">Contacto</a> 
-    </nav>
-  </header>
+  <Header />
 
-  <!-- HERO -->
-  <section class="hero">
-    <img
-      src="/images/hero.jpg"
-      alt="Hero image"
-      class="hero-image"
-    />
+  <!-- CARTEL MARQUESINA -->
+  <div class="top-banner">
+    <div class="banner-track">
+      <span>
+        LA LAURI STUDIO — PHOTOGRAPHY — ART DIRECTION — CREATIVE STUDIO —
+      </span>
+      <span>
+        LA LAURI STUDIO — PHOTOGRAPHY — ART DIRECTION — CREATIVE STUDIO —
+      </span>
+    </div>
+  </div>
 
-    <div class="hero-text">
-      <h1>LA LAURI</h1>
-      <p>Photography · Art Direction</p>
+  <!-- HERO GRID -->
+  <section class="hero-grid">
+    <!-- IZQUIERDA -->
+    <div class="hero-left project-container">
+      <img src="/images/fondo1.jpg" alt="Fondo 1" />
+      <span class="project-label">PROYECTO 1</span>
+    </div>
+
+    <!-- DERECHA -->
+    <div class="hero-right">
+      <div class="hero-top project-container">
+        <img src="/images/fondo2.jpg" alt="Fondo 2" />
+        <span class="project-label">PROYECTO 2</span>
+      </div>
+      <div class="hero-bottom project-container">
+        <img src="/images/hero.jpg" alt="Hero image" />
+        <span class="project-label">PROYECTO 3</span>
+      </div>
     </div>
   </section>
 
-  <!-- FONDO -->
-  <img id="background" src={background.src} alt="" />
-
-  <!-- ICONOS -->
+  <!-- ICONOS SOCIALES -->
   <div id="social-icons">
     <a href="https://www.instagram.com/lalaulozanoo" target="_blank">
       <img src="/src/assets/svg/instagram.svg.svg" alt="Instagram" />
@@ -44,50 +53,37 @@ import background from '../assets/background.svg';
 
   <!-- CONTENIDO -->
   <main>
-  <section class="intro">
-    <p>
-      Visual storyteller focused on photography,
-      art direction and editorial aesthetics.
-    </p>
-
-    <!-- Enlace "Sobre mi" -->
-    <a href="/sobremi" class="sobremi-link">Sobre mi</a>
-  </section>
-</main>
+    <section class="intro">
+      <p>
+        Visual storyteller focused on photography,
+        art direction and editorial aesthetics.
+      </p>
+      <a href="/sobremi" class="sobremi-link">ABOUT ME</a>
+    </section>
+  </main>
 
   <!-- FOOTER -->
   <footer class="site-footer">
     <h2 class="contact-trigger">Contacto</h2>
     <p>© 2026 La Lauri</p>
-      <p>
-    <a href="mailto:lauralozano992@gmail.com" class="footer-email">
-      lauralozano992@gmail.com
-    </a>
-  </p>
+    <p>
+      <a href="mailto:lauralozano992@gmail.com" class="footer-email">
+        lauralozano992@gmail.com
+      </a>
+    </p>
   </footer>
+
+  <!-- MODAL DE PROYECTO -->
+  <div id="project-modal" class="project-modal">
+    <div class="modal-bg"></div>  <!-- imagen de fondo -->
+    <img class="modal-zoom-img" src="" alt="Proyecto" /> <!-- imagen con zoom -->
+    <h2 class="modal-title"></h2> <!-- título que aparece letra por letra -->
+    <span class="modal-close">&times;</span> <!-- botón cerrar -->
+  </div>
 
 </Layout>
 
-<!-- CURSOR -->
-<div class="custom-cursor"></div>
-
-<!-- MODAL -->
-<div id="contact-modal" class="modal">
-  <div class="modal-content">
-    <span id="close-modal">&times;</span>
-    <h3>Hablemos ✨</h3>
-
-    <form action="https://formspree.io/f/xnjbnvgj" method="POST">
-      <input type="text" name="name" placeholder="Nombre" required />
-      <input type="email" name="email" placeholder="Correo" required />
-      <textarea name="message" placeholder="Mensaje" required></textarea>
-      <button type="submit">Enviar</button>
-    </form>
-  </div>
-</div>
-
 <style>
-
 /* RESET */
 * {
   margin: 0;
@@ -95,15 +91,12 @@ import background from '../assets/background.svg';
   box-sizing: border-box;
 }
 
-/* FADE IN */
 body {
   opacity: 0;
   animation: fadeIn 0.6s ease forwards;
+  background-color: white;
 }
-
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
+@keyframes fadeIn { to { opacity: 1; } }
 
 /* HEADER */
 #main-header {
@@ -111,118 +104,150 @@ body {
   top: 0;
   width: 100%;
   padding: 1.5rem 3rem;
-  z-index: 10;
-  transition: background 0.4s ease, color 0.4s ease;
+  z-index: 20;
+  transition: background 0.4s ease;
 }
 
+/* NAV LINKS */
 #main-header nav {
   display: flex;
   gap: 2rem;
 }
 
-.sobremi-link {
-  display: inline-block;
-  margin-top: 1rem;
-  font-weight: 600;
-  font-size: 2rem;
-  color: rgb(129, 125, 125);
-  text-decoration: none;   /* Quitamos subrayado */
-  transition: color 0.3s ease, transform 0.3s ease;
+/* HERO GRID */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 140px;
+  height: auto;
 }
-
-.sobremi-link:hover {
-  color: #ec0b52;          /* Color rosa al pasar el cursor */
-  transform: scale(1.05);  /* Pequeño zoom al pasar el cursor */
-}
-
-.nav-btn {
-  color: rgb(129, 125, 125);
-  text-decoration: none;       /* quitamos subrayado nativo */
-  font-size: 0.85rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  border-bottom: 2px solid rgb(129, 125, 125); /* subrayado gris */
-  padding-bottom: 2px;         /* espacio entre texto y línea */
-  transition: color 0.4s ease, border-color 0.4s ease;
-}
-
-.nav-btn:hover {
-  color:  rgb(129, 125, 125);             /* violeta al pasar el cursor */
-  border-color: #ec0b52;      /* línea violeta también */
-}
-
-.nav-btn::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 0%;
-  height: 2px;
-  background: #b7a1b9;
-  transition: all 0.4s ease;
-  transform: translateX(-50%);
-}
-
-
-
-
-/* HEADER SCROLL */
-#main-header.scrolled {
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(8px);
-}
-
-#main-header.scrolled .nav-btn {
-  color: rgb(40,40,40);
-}
-
-/* HERO */
-.hero {
-  height: 100vh;
+.hero-left, .hero-right { height: auto; }
+.project-container {
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
-
-.hero-image {
-  width: 50%;
+.project-container img {
+  width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: right center;
-  margin-left: auto;
-  display: block;
+  transition: transform 0.3s ease;
 }
-
-.hero-text {
+.project-container:hover img {
+  transform: scale(1.05);
+  border-radius: 1rem;
+}
+.project-label {
   position: absolute;
-  bottom: 10vh;
-  left: 6vw;
-  color: rgb(22, 22, 22);
-}
-
-.hero-text h1 {
-  font-size: clamp(3rem, 8vw, 6rem);
-  letter-spacing: 0.3em;
-  font-weight: 600;
-}
-
-.hero-text p {
-  margin-top: 1rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.35em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 2rem;
   text-transform: uppercase;
-  opacity: 0.85;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+.project-container:hover .project-label {
+  transform: translate(-50%, -50%) scale(2.5);
+  border-radius: 1rem;
+  background: rgba(0,0,0,0.5);
 }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.1),
-    rgba(0,0,0,0.35)
-  );
+/* MODAL */
+.project-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 9999;
+  background: rgba(0,0,0,0.7);
 }
+.project-modal .modal-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.5);
+  z-index: 1;
+}
+.modal-zoom-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 2;
+  animation: zoomPulseFast 0.8s infinite;
+}
+@keyframes zoomPulseFast {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+.modal-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 4rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  z-index: 3;
+  white-space: nowrap;
+}
+.modal-close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 5rem;
+  font-weight: bold;
+  color: #070707; /* rosa header */
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+  z-index: 3;
+}
+.modal-close:hover {
+  transform: scale(2.5);
+  color: #f66489;
+}
+
+/* BANNER */
+.top-banner {
+  position: relative;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  background: white;
+  overflow: hidden;
+  z-index: 15;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+.top-banner .banner-track {
+  display: flex;
+  width: max-content;
+  animation: scrollBanner 25s linear infinite;
+}
+.top-banner .banner-track span {
+  white-space: nowrap;
+  padding: 0.7rem 3rem;
+  font-size: 2.5rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+}
+@keyframes scrollBanner { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* INTRO */
 .intro {
@@ -231,8 +256,16 @@ body {
   padding: 0 2rem;
   font-size: 1.2rem;
   line-height: 1.6;
-   text-align: center;
+  text-align: center;
 }
+.intro a {
+  text-decoration: none;
+  color: rgb(129, 125, 125);
+  font-size: 2.4rem;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+.intro a:hover { transform: scale(1.2); }
 
 /* SOCIAL */
 #social-icons {
@@ -244,14 +277,10 @@ body {
   flex-direction: column;
   gap: 1rem;
 }
-
 #social-icons img {
-   width: 30px;
+  width: 30px;
   opacity: 0.7;
-  transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
-  filter: grayscale(0%) brightness(1); /* por defecto sin cambios */
 }
-
 #social-icons img:hover {
   transform: scale(1.2);
   filter: brightness(0) saturate(100%) invert(44%) sepia(99%) saturate(4106%) hue-rotate(317deg) brightness(100%) contrast(97%);
@@ -263,120 +292,74 @@ body {
   padding: 4rem 2rem;
   text-align: center;
 }
-
-.site-footer h2 {
-  font-size: 0.9rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
 .footer-email {
-  color: rgb(90, 87, 87); /* color base gris */
+  color: rgb(129, 125, 125);
   text-decoration: none;
-  transition: color 0.3s ease, font-size 0.3s ease;
+  display: inline-block;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
-
 .footer-email:hover {
-  color: #ec0b52; /* color al pasar el cursor */
-  font-size: 1.1rem;      
-}
-
-
-/* MODAL */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
-.modal.active {
-  display: flex;
-}
-
-.modal-content {
-  background: white;
-  padding: 2rem;
-  max-width: 400px;
-  width: 90%;
-}
-
-/* CURSOR */
-.custom-cursor {
-  position: fixed;
-  width: 18px;
-  height: 18px;
-  border: 1px solid rgba(255,255,255,0.6);
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  transition: transform 0.12s ease-out;
-  z-index: 9999;
-}
-
-/* BACKGROUND */
-#background {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  filter: blur(120px);
+  color: #ec0b52;
+  transform: scale(1.1);
 }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-  .hero-text {
-    left: 2rem;
-  }
-
-  .hero-text h1 {
-    letter-spacing: 0.15em;
-  }
+  .hero-grid { grid-template-columns: 1fr; margin-top: 120px; }
+  .hero-left, .hero-right { height: auto; }
+  .hero-right .hero-top, .hero-right .hero-bottom { margin-top: 1rem; }
+  .intro { margin: 4rem auto; padding: 0 1rem; font-size: 1rem; }
+  .top-banner .banner-track span { font-size: 1.5rem; padding: 0.5rem 1rem; }
 }
-
 </style>
 
 <script>
-/* CURSOR */
-const cursor = document.querySelector('.custom-cursor');
-window.addEventListener('mousemove', e => {
-  cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-});
-
 /* HEADER SCROLL */
 const header = document.getElementById("main-header");
-
 window.addEventListener("scroll", () => {
-  if (window.scrollY > window.innerHeight * 0.6) {
-    header.classList.add("scrolled");
-  } else {
-    header.classList.remove("scrolled");
-  }
+  if (window.scrollY > window.innerHeight * 0.6) header.classList.add("scrolled");
+  else header.classList.remove("scrolled");
 });
 
-/* FADE OUT LINKS */
-document.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", e => {
-    if (link.target === "_blank") return;
-    e.preventDefault();
-    document.body.style.opacity = 0;
-    setTimeout(() => {
-      window.location = link.href;
-    }, 300);
+/* MODAL PROYECTOS */
+const projectContainers = document.querySelectorAll('.project-container');
+const modal = document.getElementById('project-modal');
+const modalImg = modal.querySelector('.modal-zoom-img');
+const modalBg = modal.querySelector('.modal-bg');
+const modalTitle = modal.querySelector('.modal-title');
+const modalClose = modal.querySelector('.modal-close');
+
+projectContainers.forEach(container => {
+  container.addEventListener('click', () => {
+    const imgSrc = container.querySelector('img').src;
+    const title = container.querySelector('.project-label').textContent.toUpperCase();
+
+    modal.style.display = 'flex';
+    modalImg.src = imgSrc;
+    modalBg.style.backgroundImage = `url(${imgSrc})`;
+
+    modalTitle.textContent = '';
+    let index = 0;
+    const interval = setInterval(() => {
+      if (index < title.length) {
+        modalTitle.textContent += title[index];
+        index++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 100);
   });
 });
 
-/* MODAL */
-const modal = document.getElementById("contact-modal");
-document.querySelectorAll(".contact-trigger").forEach(el =>
-  el.addEventListener("click", () => modal.classList.add("active"))
-);
-document.getElementById("close-modal")
-  .addEventListener("click", () => modal.classList.remove("active"));
-window.addEventListener("click", e => {
-  if (e.target === modal) modal.classList.remove("active");
+modalClose.addEventListener('click', () => {
+  modal.style.display = 'none';
+  modalTitle.textContent = '';
+});
+
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    modal.style.display = 'none';
+    modalTitle.textContent = '';
+  }
 });
 </script>
